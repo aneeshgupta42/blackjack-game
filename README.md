@@ -24,3 +24,5 @@ The code was divided into different classes. These were used for representing a 
 I organized the code as a package. The player can install the package (using the above instructions), and need only type `game` to play the game. This makes it a bit more user friendly than having to run python on a particular file to run the game.
 
 Disclaimer: This code adapts itself from a blackjack game I had to write as part of a computer science tutorial class.
+
+Made by: Aneesh Gupta. aneesh[dot]gupta[at]duke[dot]edu
