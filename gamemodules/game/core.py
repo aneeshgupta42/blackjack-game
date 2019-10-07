@@ -1,30 +1,6 @@
 import random
-#from game.helpers.helpers.py import Card
-
-class Card:
-    def __init__(self, suit, value):
-        self.suit = suit
-        self.value = value
-
-    def __repr__(self):
-        return " of ".join((self.value, self.suit))
-
-
-class Deck:
-    def __init__(self):
-        suits = ["Spades", "Hearts", "Clubs", "Diamonds"]
-        values = ["A", "2", "3", "4", "5", "6",
-        "7", "8", "9", "10", "J", "Q", "K"]
-
-        self.cards = [Card(s, v) for s in suits for v in values]
-
-    def shuffle(self):
-        if len(self.cards) > 1:
-            random.shuffle(self.cards)
-
-    def deal(self):
-        if len(self.cards) > 1:
-            return self.cards.pop(0)
+from game.helpers.cards import Card
+from game.helpers.cards import Deck
 
 class Hand:
     def __init__(self, dealer=False):
@@ -57,12 +33,12 @@ class Hand:
 
     def display(self):
         if self.dealer:
-            print("hidden")
+            print("Hidden")
             print(self.cards[1])
         else:
             for card in self.cards:
                 print(card)
-            print("Value:", self.get_value())
+            print("Value: ", self.get_value())
 
 class Game:
     def __init__(self):
@@ -82,10 +58,10 @@ class Game:
                 self.player_hand.add_card(self.deck.deal())
                 self.dealer_hand.add_card(self.deck.deal())
 
-            print("Your hand is:")
+            print("Your hand is: \n")
             self.player_hand.display()
             print()
-            print("Dealer's hand is:")
+            print("Dealer's hand is: \n")
             self.dealer_hand.display()
 
             game_over = False
@@ -99,23 +75,23 @@ class Game:
 
                 choice = input("Please choose [Hit / Stick] ").lower()
                 while choice not in ["h", "s", "hit", "stick"]:
-                    choice = input("Please enter 'hit' or 'stick' (or H/S) ").lower()
+                    choice = input("Please enter either 'hit' or 'stick' (or H/S) ").lower()
                 if choice in ['hit', 'h']:
                     self.player_hand.add_card(self.deck.deal())
                     self.player_hand.display()
                     if self.player_is_over():
-                        print("You have lost!")
+                        print("You have lost! Try again...")
                         game_over = True
                 else:
                     player_hand_value = self.player_hand.get_value()
                     dealer_hand_value = self.dealer_hand.get_value()
 
                     print("Final Results")
-                    print("Your hand:", player_hand_value)
-                    print("Dealer's hand:", dealer_hand_value)
+                    print("Your hand: ", player_hand_value)
+                    print("Dealer's hand: ", dealer_hand_value)
 
                     if player_hand_value > dealer_hand_value:
-                        print("You Win!")
+                        print("You Win! Congratulations!!")
                     elif player_hand_value == dealer_hand_value:
                         print("Tie!")
                     else:
