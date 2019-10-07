@@ -35,6 +35,7 @@ class Hand:
         if self.dealer:
             print("Hidden")
             print(self.cards[1])
+            print('\n')
         else:
             for card in self.cards:
                 print(card)
@@ -58,10 +59,10 @@ class Game:
                 self.player_hand.add_card(self.deck.deal())
                 self.dealer_hand.add_card(self.deck.deal())
 
-            print("Your hand is: \n")
+            print("\nYour hand is: ")
             self.player_hand.display()
             print()
-            print("Dealer's hand is: \n")
+            print("Dealer's hand is: ")
             self.dealer_hand.display()
 
             game_over = False
@@ -122,13 +123,13 @@ class Game:
 
     def show_blackjack_results(self, player_has_blackjack, dealer_has_blackjack):
         if player_has_blackjack and dealer_has_blackjack:
-            print("Both players have blackjack! Draw!")
+            print("\n Both players have blackjack! Draw!")
 
         elif player_has_blackjack:
-            print("You have blackjack! You win!")
+            print("\n You have blackjack! You win!")
 
         elif dealer_has_blackjack:
-            print("Dealer has blackjack! Dealer wins!")
+            print("\n Dealer has blackjack! Dealer wins!")
 
 
 def main():
